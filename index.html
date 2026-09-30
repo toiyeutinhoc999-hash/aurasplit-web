@@ -2,84 +2,125 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>AuraSplit AI - Web Studio Pro</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AuraSplit AI Studio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        h1 {
+            text-align: center;
+            color: #a855f7;
+            margin-bottom: 25px;
+        }
+        .btn {
+            background-color: #9333ea;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            width: 100%;
+            transition: background 0.3s;
+        }
+        .btn:hover {
+            background-color: #7e22ce;
+        }
+        .download-section {
+            text-align: center;
+            padding: 30px;
+            background: #1a1a1a;
+            color: white;
+            border-radius: 10px;
+            margin: 30px auto 0 auto;
+            max-width: 800px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 1px solid #333;
+        }
+        .download-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .download-btn-win {
+            background: #0078d7;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .download-btn-win:hover {
+            background: #005a9e;
+        }
+        .download-btn-mac {
+            background: #333333;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: bold;
+            border: 1px solid #555;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        .download-btn-mac:hover {
+            background: #444444;
+        }
+    </style>
 </head>
-<body class="bg-slate-900 text-white flex flex-col items-center justify-center min-h-screen">
-    <div class="bg-slate-800 p-8 rounded-2xl shadow-2xl w-full max-w-lg border border-slate-700">
-        <h1 class="text-3xl font-bold text-center mb-6 text-purple-400">🎵 AuraSplit AI Web</h1>
+<body>
+
+    <div class="container">
+        <h1>🎵 AuraSplit AI Studio</h1>
+        <p style="text-align: center; color: #aaa;">Hệ thống tách stem nhạc bằng Trí Tuệ Nhân Tạo</p>
         
-        <div class="mb-4">
-            <label class="block text-sm font-medium mb-2">Chọn file nhạc (MP3, WAV, FLAC):</label>
-            <input type="file" id="audioFile" class="w-full bg-slate-700 border border-slate-600 rounded-lg p-2 cursor-pointer">
+        <!-- Khu vực chức năng web -->
+        <div style="margin-top: 20px;">
+            <input type="file" id="audioFile" style="margin-bottom: 15px; color: #fff;"><br>
+            <button class="btn" onclick="alert('Đã sẵn sàng tách nhạc!')">BẮT ĐẦU TÁCH STEMS</button>
         </div>
-
-        <div class="mb-4">
-            <label class="block text-sm font-medium mb-2">Chọn chế độ tách:</label>
-            <select id="splitMode" class="w-full bg-slate-700 border border-slate-600 rounded-lg p-2">
-                <option value="vocal_beat">🎤 Tách Vocal & Beat (Siêu sạch - Nhanh gọn)</option>
-                <option value="stems">🎛️ Tách Đầy Đủ 4 Nhạc Cụ (Vocal, Drums, Bass, Other)</option>
-            </select>
-        </div>
-
-        <!-- Khung hiển thị thông tin BPM & Key sau khi xử lý -->
-        <div id="infoBox" class="hidden bg-slate-700/50 border border-slate-600 rounded-lg p-4 mb-4">
-            <p class="text-rose-400 font-semibold mb-1" id="resBpm">⚡ Tốc độ: -- BPM</p>
-            <p class="text-amber-400 font-semibold" id="resKey">🎼 Tông giọng: --</p>
-        </div>
-
-        <button onclick="uploadAudio()" id="btnSubmit" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 rounded-lg transition duration-200">
-            🚀 BẮT ĐẦU TÁCH & PHÂN TÍCH
-        </button>
-
-        <p id="statusText" class="text-center mt-4 text-sm text-sky-400 font-semibold"></p>
     </div>
 
-    <script>
-        async function uploadAudio() {
-            const fileInput = document.getElementById('audioFile');
-            const mode = document.getElementById('splitMode').value;
-            const statusText = document.getElementById('statusText');
-            const btn = document.getElementById('btnSubmit');
-            const infoBox = document.getElementById('infoBox');
+    <!-- KHU VỰC TẢI PHẦN MỀM CHO WIN VÀ MAC -->
+    <div class="download-section">
+        <h2>Tải Ứng Dụng AuraSplit AI Studio</h2>
+        <p>Trải nghiệm phần mềm tách nhạc AI mạnh mẽ trực tiếp trên máy tính của bạn với giao diện Desktop chuyên nghiệp!</p>
+        
+        <div class="download-buttons">
+            <!-- Nút tải cho Windows (Trỏ thẳng vào file .exe trong thư mục downloads) -->
+            <a href="/downloads/AuraSplit_Installer_Windows.exe" class="download-btn-win">
+                📥 Tải cho Windows (Win)
+            </a>
+            
+            <!-- Nút tải cho macOS -->
+            <a href="#" class="download-btn-mac">
+                🍏 Tải cho macOS (Mac - Sắp ra mắt)
+            </a>
+        </div>
+    </div>
 
-            if (fileInput.files.length === 0) {
-                alert("Vui lòng chọn một file nhạc!");
-                return;
-            }
-
-            const formData = new FormData();
-            formData.append("file", fileInput.files[0]);
-            formData.append("mode", mode);
-
-            btn.disabled = true;
-            btn.classList.add('opacity-50');
-            statusText.innerText = "⏳ AI đang phân tích BPM, Key và tách nhạc...";
-            infoBox.classList.add('hidden');
-
-            try {
-                // Đã chuyển thành đường dẫn tương đối để chạy trực tiếp trên Render
-                const response = await fetch('/api/split', {
-                    method: 'POST',
-                    body: formData
-                });
-                const result = await response.json();
-
-                if (result.status === "success") {
-                    statusText.innerText = "🎉 Xử lý thành công!";
-                    document.getElementById('resBpm').innerText = `⚡ Tốc độ: ${result.bpm} BPM`;
-                    document.getElementById('resKey').innerText = `🎼 Tông giọng: ${result.key} Major/Minor`;
-                    infoBox.classList.remove('hidden');
-                } else {
-                    statusText.innerText = "❌ Lỗi hệ thống xử lý.";
-                }
-            } catch (err) {
-                statusText.innerText = "❌ Lỗi kết nối đến máy chủ!";
-            } finally {
-                btn.disabled = false;
-                btn.classList.remove('opacity-50');
-            }
-        }
-    </script>
 </body>
 </html>
