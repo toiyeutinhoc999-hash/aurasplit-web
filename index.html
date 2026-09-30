@@ -5,119 +5,152 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AuraSplit AI Studio</title>
     <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
         body {
-            font-family: Arial, sans-serif;
             background-color: #121212;
             color: #ffffff;
-            margin: 0;
-            padding: 20px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
         }
         .container {
             width: 100%;
-            max-width: 800px;
+            max-width: 750px;
             background: #1e1e1e;
-            padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            padding: 30px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+            text-align: center;
+            border: 1px solid #2d2d2d;
         }
         h1 {
-            text-align: center;
+            font-size: 28px;
+            margin-bottom: 10px;
             color: #a855f7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        p {
+            color: #b3b3b3;
             margin-bottom: 25px;
+            font-size: 14px;
+        }
+        .upload-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            background: #2a2a2a;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        input[type="file"] {
+            color: #fff;
         }
         .btn {
-            background-color: #9333ea;
+            background: linear-gradient(135deg, #9333ea, #a855f7);
             color: white;
-            padding: 12px 24px;
             border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
+            padding: 14px 20px;
             font-size: 16px;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
             width: 100%;
-            transition: background 0.3s;
+            transition: opacity 0.3s;
         }
         .btn:hover {
-            background-color: #7e22ce;
+            opacity: 0.9;
         }
+        /* Phần Download Desktop App */
         .download-section {
-            text-align: center;
-            padding: 30px;
-            background: #1a1a1a;
-            color: white;
-            border-radius: 10px;
-            margin: 30px auto 0 auto;
-            max-width: 800px;
             width: 100%;
-            box-sizing: border-box;
+            max-width: 750px;
+            background: #1a1a1a;
             border: 1px solid #333;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+        .download-section h2 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        .download-section p {
+            margin-bottom: 20px;
         }
         .download-buttons {
-            margin-top: 20px;
             display: flex;
+            gap: 15px;
             justify-content: center;
-            gap: 20px;
             flex-wrap: wrap;
         }
-        .download-btn-win {
-            background: #0078d7;
-            color: white;
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
             padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 6px;
+            border-radius: 8px;
             font-weight: bold;
-            display: inline-block;
-            transition: background 0.3s;
+            text-decoration: none;
+            font-size: 15px;
+            transition: transform 0.2s;
         }
-        .download-btn-win:hover {
-            background: #005a9e;
+        .download-btn:hover {
+            transform: translateY(-2px);
         }
-        .download-btn-mac {
-            background: #333333;
+        .btn-win {
+            background-color: #0066cc;
             color: white;
-            padding: 12px 24px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            border: 1px solid #555;
-            display: inline-block;
-            transition: background 0.3s;
         }
-        .download-btn-mac:hover {
-            background: #444444;
+        .btn-mac {
+            background-color: #333333;
+            color: #b3b3b3;
+            border: 1px solid #444;
+            cursor: not-allowed;
         }
     </style>
 </head>
 <body>
 
+    <!-- Khối Tách Nhạc Web -->
     <div class="container">
         <h1>🎵 AuraSplit AI Studio</h1>
-        <p style="text-align: center; color: #aaa;">Hệ thống tách stem nhạc bằng Trí Tuệ Nhân Tạo</p>
+        <p>Hệ thống tách stem nhạc bằng Trí Tuệ Nhân Tạo</p>
         
-        <!-- Khu vực chức năng web -->
-        <div style="margin-top: 20px;">
-            <input type="file" id="audioFile" style="margin-bottom: 15px; color: #fff;"><br>
-            <button class="btn" onclick="alert('Đã sẵn sàng tách nhạc!')">BẮT ĐẦU TÁCH STEMS</button>
+        <div class="upload-box">
+            <input type="file" id="audioFile">
         </div>
+
+        <button class="btn" onclick="alert('Vui lòng chọn tệp nhạc trước!')">BẮT ĐẦU TÁCH STEMS</button>
     </div>
 
-    <!-- KHU VỰC TẢI PHẦN MỀM CHO WIN VÀ MAC -->
+    <!-- Khối Tải Ứng Dụng Desktop -->
     <div class="download-section">
-        <h2>Tải Ứng Dụng AuraSplit AI Studio</h2>
+        <h2>Tải Ứng Dụng AuraSplit AI Studio</h2>
         <p>Trải nghiệm phần mềm tách nhạc AI mạnh mẽ trực tiếp trên máy tính của bạn với giao diện Desktop chuyên nghiệp!</p>
         
         <div class="download-buttons">
-            <!-- Nút tải cho Windows (Trỏ thẳng vào file .exe trong thư mục downloads) -->
-            <a href="/downloads/AuraSplit_Installer_Windows.exe" class="download-btn-win">
+            <!-- Nút tải file exe (Đảm bảo file exe nằm trong thư mục downloads của dự án) -->
+            <a href="downloads/AuraSplit_Installer_Windows.exe" class="download-btn btn-win" download>
                 📥 Tải cho Windows (Win)
             </a>
             
-            <!-- Nút tải cho macOS -->
-            <a href="#" class="download-btn-mac">
-                🍏 Tải cho macOS (Mac - Sắp ra mắt)
+            <a href="#" class="download-btn btn-mac" onclick="alert('Phiên bản macOS đang phát triển, sắp ra mắt!'); return false;">
+                🍎 Tải cho macOS (Mac - Sắp ra mắt)
             </a>
         </div>
     </div>
